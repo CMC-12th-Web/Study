@@ -1,11 +1,11 @@
 import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import HelloWorldScreen from './src/screen/HelloworldScreen';
+import ToggleBoxScreen from './src/screen/ToggleBoxScreen';
 
 const App = () => {
   return (
     <SafeAreaProvider>
-      <HelloWorldScreen />
+      <ToggleBoxScreen />
     </SafeAreaProvider>
   );
 };
