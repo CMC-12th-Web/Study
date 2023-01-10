@@ -64,7 +64,7 @@ buck-out/
 .bundle
 android/
 ios/
-__test__
+__tests__/
 .buckconfig
 .eslintrc.js
 .flowconfig
@@ -77,4 +77,7 @@ Gemfile
 Gemfile.lock
 metro.config.js
 package.json
+package-lock.json
+react-native.config.js
 yarn.lock
+yarn-error.log
