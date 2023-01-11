@@ -1,5 +1,6 @@
 import { View, Text, Button, SafeAreaView, StyleSheet } from 'react-native'
 import React from 'react'
+import { styles } from '../styles';
 
 function Home({ navigation, route }) {
   return (
@@ -23,9 +24,4 @@ function Home({ navigation, route }) {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
 export default Home;

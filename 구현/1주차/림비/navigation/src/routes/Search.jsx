@@ -1,5 +1,6 @@
 import { View, Text, Button, SafeAreaView, StyleSheet } from 'react-native'
 import React from 'react'
+import { styles } from '../styles';
 
 function Search({ navigation }) {
   return (
@@ -12,9 +13,4 @@ function Search({ navigation }) {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
 export default Search;
