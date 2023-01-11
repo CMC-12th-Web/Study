@@ -3,14 +3,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Todo from './pages/Todo';
 import { color } from './common';
 import Profile from './pages/Profile';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+import Circle from './components/Circle';
 const Tab = createBottomTabNavigator();
 
 const BottomNavigation = () => {
   const IconOption = { 
     tabBarActiveBackgroundColor: color.backGround,
     tabBarInactiveBackgroundColor: color.backGround,
-    tabBarIcon: ({focused}) => focused ? <View style={[styles.circle, styles.focused]} /> : <View style={styles.circle} />
+    tabBarIcon: ({focused}) => focused ? <Circle color={color.main} size={30} focused={color.sub} /> : <Circle color={color.main} size={30} />
   }
 
   return (
@@ -20,17 +21,5 @@ const BottomNavigation = () => {
     </Tab.Navigator>
   )
 }
-
-const styles = StyleSheet.create({
-  circle: {
-    width: 30,
-    height: 30,
-    borderRadius: 100,
-    backgroundColor: color.main
-  },
-  focused: {
-    backgroundColor: color.sub
-  }
-})
 
 export default BottomNavigation;

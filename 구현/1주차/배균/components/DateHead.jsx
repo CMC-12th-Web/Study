@@ -1,15 +1,13 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { color } from "../common";
+
 const DateHead = () => {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
+  const date = new Intl.DateTimeFormat("ko", { dateStyle: 'long' }).format(new Date())
 
   return (
     <View style={styles.margin}>
-      <Text style={styles.dateText}>{year}년 {month}월 {day}일</Text>
+      <Text style={styles.dateText}>{date}</Text>
     </View>
   );
 };

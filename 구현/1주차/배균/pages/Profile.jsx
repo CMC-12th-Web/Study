@@ -1,13 +1,14 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, View, Text } from "react-native";
 import { color } from "../common";
+import Circle from "../components/Circle";
 
 const Profile = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.padding}>
         <Text style={styles.text}>안녕하세요, 배균입니다~</Text>
-        <View style={styles.circle} />
+        <Circle size={100} position={{right: 30, bottom: 30}} color={color.main} />
       </View>
     </SafeAreaView>
   )
@@ -21,15 +22,6 @@ const styles = StyleSheet.create({
   padding: {
     flex: 1,
     padding: 30
-  },
-  circle: {
-    position: 'absolute',
-    bottom: 30,
-    right: 30,
-    width: 100,
-    height: 100,
-    borderRadius: 100,
-    backgroundColor: color.sub
   },
   text: {
     fontSize: 24,

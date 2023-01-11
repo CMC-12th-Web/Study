@@ -1,18 +1,19 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, View} from "react-native";
 import { color } from "../common";
-import Button from "../components/Button";
+import NaviButton from "../components/NaviButton";
 import DateHead from "../components/DateHead";
+import Circle from '../components/Circle'
 
 const Todo = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.padding}>
         <DateHead />
-        <Button text="할 일" navigation={() => navigation.navigate('MakeTodo')} />
-        <Button text="일기" navigation={() => navigation.navigate('MakeDiary')} />
-        <View style={styles.circleS} />
-        <View style={styles.circle} />
+        <NaviButton text="할 일" navigateTo={() => navigation.navigate('MakeTodo')} />
+        <NaviButton text="일기" navigateTo={() => navigation.navigate('MakeDiary')} />
+        <Circle position={{ bottom: 130, right: 110 }} size={40} color={color.main} />
+        <Circle position={{ bottom: 30, right: 30 }} size={100} color={color.sub} />
       </View>
     </SafeAreaView>
   )
@@ -26,24 +27,6 @@ const styles = StyleSheet.create({
   padding: {
     flex: 1,
     padding: 30
-  },
-  circle: {
-    position: 'absolute',
-    bottom: 30,
-    right: 30,
-    width: 100,
-    height: 100,
-    borderRadius: 100,
-    backgroundColor: color.sub
-  },
-  circleS: {
-    position: 'absolute',
-    bottom: 130,
-    right: 110,
-    width: 40,
-    height: 40,
-    borderRadius: 100,
-    backgroundColor: color.main
   }
 });
 

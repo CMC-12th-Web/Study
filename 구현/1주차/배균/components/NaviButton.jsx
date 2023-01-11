@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import { color } from "../common";
 
-const Button = ({text, navigation}) => {
+const NaviButton = ({text, navigateTo}) => {
   return (
-    <Pressable style={styles.block} onPress={navigation}>
+    <Pressable style={styles.block} onPress={navigateTo}>
       <Text style={styles.text}>{text}</Text>
     </Pressable>
   );
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default NaviButton;
