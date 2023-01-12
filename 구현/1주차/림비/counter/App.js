@@ -9,13 +9,13 @@ const App = () => {
         <Text style={styles.count}>{count}</Text>
       </View>
       <View style={styles.button}>
-        <Button
+      <Button
           title='+1'
-          onPress={() => setCount(count + 1)}
+          onPress={() => setCount(prev => prev + 1)}
         />
         <Button
           title='-1'
-          onPress={() => setCount(count - 1)}
+          onPress={() => setCount(prev => prev - 1)}
         />
       </View>
     </SafeAreaView>
