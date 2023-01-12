@@ -4,7 +4,7 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import HomeStackScreen from './src/screen/HomeTabScreen';
+import HomeTabScreen from './src/screen/HomeTabScreen';
 import DetailScreen from './src/screen/DetailScreen';
 
 import {screenStyle} from './src/styles/common';
@@ -22,7 +22,7 @@ const App = () => {
       <SafeAreaView style={styles.screen}>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="홈" component={HomeStackScreen} />
+            <Stack.Screen name="홈" component={HomeTabScreen} />
             <Stack.Screen name="디테일" component={DetailScreen} />
           </Stack.Navigator>
         </NavigationContainer>
