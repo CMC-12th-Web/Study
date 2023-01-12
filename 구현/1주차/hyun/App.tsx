@@ -1,37 +1,30 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import AlarmScreen from './src/screen/AlarmScreen';
-import SearchScreen from './src/screen/SearchScreen';
-import MessageScreen from './src/screen/MessageScreen';
 import {SafeAreaView, StyleSheet} from 'react-native';
-import HomeStackScreen from './src/screen/HomeStackScreen';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-export type RootTabParamList = {
+import HomeStackScreen from './src/screen/HomeTabScreen';
+import DetailScreen from './src/screen/DetailScreen';
+
+import {screenStyle} from './src/styles/common';
+
+export type RootStackParamList = {
   홈: undefined;
-  알림: undefined;
-  검색: undefined;
-  메시지: undefined;
+  디테일: undefined;
 };
 
-const Tab = createBottomTabNavigator<RootTabParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.screen}>
         <NavigationContainer>
-          <Tab.Navigator>
-            <Tab.Screen
-              name="홈"
-              component={HomeStackScreen}
-              options={{headerShown: false}}
-            />
-            <Tab.Screen name="알림" component={AlarmScreen} />
-            <Tab.Screen name="검색" component={SearchScreen} />
-            <Tab.Screen name="메시지" component={MessageScreen} />
-          </Tab.Navigator>
+          <Stack.Navigator>
+            <Stack.Screen name="홈" component={HomeStackScreen} />
+            <Stack.Screen name="디테일" component={DetailScreen} />
+          </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
     </SafeAreaProvider>
@@ -39,10 +32,7 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignSelf: 'stretch',
-  },
+  ...screenStyle,
 });
 
 export default App;

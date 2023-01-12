@@ -3,12 +3,12 @@ import {Pressable, StyleSheet, Text} from 'react-native';
 
 interface Props {
   number: number;
-  onClick: Dispatch<SetStateAction<number>>;
+  onPress: Dispatch<SetStateAction<number>>;
 }
 
-const Button = ({number, onClick}: Props) => {
+const Button = ({number, onPress}: Props) => {
   const handlePress = () => {
-    onClick(prev => prev + number);
+    onPress(prev => prev + number);
   };
   return (
     <Pressable style={styles.button} onPress={handlePress}>

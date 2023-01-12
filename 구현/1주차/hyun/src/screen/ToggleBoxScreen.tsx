@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import {Pressable, StyleSheet, Text} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+
 import Box from '../components/Box';
+
+import {screenStyle} from '../styles/common';
 
 const ToggleBoxScreen = () => {
   const [isBoxVisible, setIsBoxVisible] = useState(false);
@@ -20,11 +23,7 @@ const ToggleBoxScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignSelf: 'stretch',
-    alignItems: 'center',
-  },
+  ...screenStyle,
   text: {
     fontSize: 18,
     color: 'blue',

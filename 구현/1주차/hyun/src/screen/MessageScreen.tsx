@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
+import {screenStyle} from '../styles/common';
+
 const MessageScreen = () => {
   return (
     <View style={styles.screen}>
@@ -10,10 +12,7 @@ const MessageScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignSelf: 'stretch',
-  },
+  ...screenStyle,
 });
 
 export default MessageScreen;

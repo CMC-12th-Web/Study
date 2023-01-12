@@ -1,10 +1,18 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {CompositeScreenProps} from '@react-navigation/native';
 
-import type {HomeStackParamList} from './HomeStackScreen';
+import type {HomeTabParamList} from './HomeTabScreen';
+import type {RootStackParamList} from '../../App';
 
-type Props = NativeStackScreenProps<HomeStackParamList, '홈'>;
+import {screenStyle} from '../styles/common';
+
+// type Props = NativeStackScreenProps<HomeTabParamList, '홈'>;
+type Props = CompositeScreenProps<
+  NativeStackScreenProps<HomeTabParamList, '홈'>,
+  NativeStackScreenProps<RootStackParamList>
+>;
 
 const HomeScreen = ({navigation}: Props) => {
   const handlePress = () => {
@@ -20,11 +28,7 @@ const HomeScreen = ({navigation}: Props) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignSelf: 'stretch',
-    alignItems: 'center',
-  },
+  ...screenStyle,
   text: {
     color: 'blue',
     fontSize: 20,
