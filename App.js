@@ -8,16 +8,17 @@ import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import Login from './src/screen/Login';
 import Home from './src/screen/Home';
-import Alarm from './src/screen/Alarm';
-import Search from './src/screen/Search';
-import Message from './src/screen/Message';
-import Detail from './src/screen/Detail';
+import Chatting from './src/screen/Chatting';
+import Profile from './src/screen/Profile';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  // const [login, setLogin] = useState(null);
+  const [login, setLogin] = useState(null);
 
   useEffect(() => {
   }, []);
@@ -25,29 +26,36 @@ export default function App() {
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-        <StackNavigator />
-        {/* <TabNavigator /> */}
+        <StackNavigator login={login} setLogin={setLogin} />
       </SafeAreaProvider>
     </NavigationContainer>
   );
 }
 
-const StackNavigator = () => {
+const StackNavigator = ({login, setLogin}) => {
+
   return (
   <Stack.Navigator
     initialRouteName="Home">
-    <Stack.Screen
-      name="Home"
-      children={TabNavigator}
-    />
-    <Stack.Screen name="Detail" component={Detail} options={{tabBarStyle: {display: 'none'},}} />
+    {login === null?
+      <Stack.Screen 
+        name="Login" 
+        children={() => <Login setLogin={setLogin} />}
+        options={{tabBarStyle: {display: 'none'}, headerShown: false, }} 
+      />:
+        <Stack.Screen
+          name="Home"
+          children={()=><TabNavigator setLogin={setLogin} />}
+          options={{tabBarStyle: {display: 'none'}, headerShown: false, }}
+        />
+    }
     {/* <Stack.Screen name="Search" component={Search} /> */}
     {/* <Stack.Screen name="Message" component={Message} /> */}
   </Stack.Navigator>
   );
 }
 
-const TabNavigator = () => {
+const TabNavigator = ({ setLogin }) => {
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -63,20 +71,8 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="알람"
-        component={Alarm}
-        options={{
-          headerShown: false,
-
-          tabBarIcon: ({color}) => (
-            <Icon name={"notifications"} size={25} color={color} />
-          ),
-          unmountOnBlur: true,
-        }}
-      />
-      <Tab.Screen
-        name="검색"
-        component={Search}
+        name="채팅"
+        component={Chatting}
         options={{
           headerShown: false,
 
@@ -87,8 +83,8 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="메시지"
-        component={Message}
+        name="프로필"
+        children={() => <Profile setLogin={setLogin} />}
         options={{
           headerShown: false,
 

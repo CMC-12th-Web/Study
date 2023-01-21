@@ -2,15 +2,15 @@ import React, {useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-const Message = () => {
+const Chatting = () => {
 
   return (
     <>
       <SafeAreaView>
-        <Text>Message</Text>
+        <Text>Chatting</Text>
       </SafeAreaView>
     </>
   );
 };
 
-export default Message;
+export default Chatting;
