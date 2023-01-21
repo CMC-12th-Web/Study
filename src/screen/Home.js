@@ -18,12 +18,4 @@ const Home = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  topbar: {
-    flex: 1,
-    padding: 18,
-    flexDirection: 'row',
-  },
-});
-
 export default Home;

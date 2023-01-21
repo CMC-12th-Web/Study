@@ -12,6 +12,8 @@ import Login from './src/screen/Login';
 import Home from './src/screen/Home';
 import Chatting from './src/screen/Chatting';
 import Profile from './src/screen/Profile';
+import Chat from './src/screen/Chat';
+import Detail from './src/screen/Detail';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -37,18 +39,30 @@ const StackNavigator = ({login, setLogin}) => {
   return (
   <Stack.Navigator
     initialRouteName="Home">
-    {login === null?
+    {/* {login === null?
       <Stack.Screen 
         name="Login" 
         children={() => <Login setLogin={setLogin} />}
         options={{tabBarStyle: {display: 'none'}, headerShown: false, }} 
-      />:
+      />: */}
+      <>
         <Stack.Screen
           name="Home"
           children={()=><TabNavigator setLogin={setLogin} />}
           options={{tabBarStyle: {display: 'none'}, headerShown: false, }}
         />
-    }
+        <Stack.Screen
+          name="Detail"
+          component={Detail}
+          options={{tabBarStyle: {display: 'none'}, headerShown: false, }}
+        />
+        <Stack.Screen
+          name="Chatting"
+          component={Chatting}
+          options={{tabBarStyle: {display: 'none'}, }}
+        />
+      </>
+    {/* } */}
     {/* <Stack.Screen name="Search" component={Search} /> */}
     {/* <Stack.Screen name="Message" component={Message} /> */}
   </Stack.Navigator>
@@ -62,7 +76,7 @@ const TabNavigator = ({ setLogin }) => {
         name="홈"
         component={Home}
         options={{
-          headerShown: false,
+          // headerShown: false,
 
           tabBarIcon: ({color}) => (
             <Icon name={"home"} size={25} color={color} />
@@ -72,9 +86,9 @@ const TabNavigator = ({ setLogin }) => {
       />
       <Tab.Screen
         name="채팅"
-        component={Chatting}
+        component={Chat}
         options={{
-          headerShown: false,
+          // headerShown: false,
 
           tabBarIcon: ({color}) => (
             <Icon name={"search"} size={25} color={color} />
@@ -86,7 +100,7 @@ const TabNavigator = ({ setLogin }) => {
         name="프로필"
         children={() => <Profile setLogin={setLogin} />}
         options={{
-          headerShown: false,
+          // headerShown: false,
 
           tabBarIcon: ({color}) => (
             <Icon name={"chatbox-ellipses"} size={25} color={color} />

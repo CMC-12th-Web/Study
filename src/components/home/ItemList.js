@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, ScrollView, View, Text, Image, Button} from 'react-native';
+import {StyleSheet, TouchableOpacity, ScrollView, View, Text, Image, Button} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import { ItemData } from '../../static/ItemData';
@@ -12,8 +12,10 @@ const ItemList = () => {
       <SafeAreaView>
         {ItemData.map((data, idx)=>{
           return (
-            <>
-              <View key={idx} style={styles.box}>
+            <TouchableOpacity 
+              key={idx}
+              onPress={() => {navigation.navigate("Detail")}}>
+              <View style={styles.box}>
                 <Image 
                   source={require('../../assets/test.png')} 
                   style={styles.img} 
@@ -24,7 +26,7 @@ const ItemList = () => {
                 </View>
               </View>
               <View style={styles.hr} />
-            </>
+            </TouchableOpacity>
           );
         })}
       </SafeAreaView>
