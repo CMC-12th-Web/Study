@@ -1,19 +1,31 @@
+import {KakaoOAuthToken, login} from '@react-native-seoul/kakao-login';
 import React from 'react';
-import {GestureResponderEvent, Pressable, StyleSheet, View} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
 
 import {KakaoLogo} from '../assets/svgs';
 import Colors from '../constants/Color';
+import {signIn} from '../redux/authSlice';
+import {useAppDispatch} from '../redux/hooks';
 
-interface ICirecleButton {
-  logo: 'google' | 'naver' | 'kakao';
-  onPress?: (event: GestureResponderEvent) => void;
-}
+const LoginButton = () => {
+  const dispatch = useAppDispatch();
 
-const CircleButton = ({logo, onPress}: ICirecleButton) => {
   return (
-    <View style={[styles.buttonContainer, styles[logo]]}>
+    <View style={[styles.buttonContainer, styles.kakao]}>
       <Pressable
-        onPress={() => {}}
+        onPress={async () => {
+          try {
+            const token: KakaoOAuthToken = await login();
+            dispatch(
+              signIn({
+                accessToken: token.accessToken,
+                refreshToken: token.refreshToken,
+              }),
+            );
+          } catch (e) {
+            console.log(e);
+          }
+        }}
         style={({pressed}) => [
           styles.innerContainer,
           pressed && styles.pressed,
@@ -51,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CircleButton;
+export default LoginButton;
