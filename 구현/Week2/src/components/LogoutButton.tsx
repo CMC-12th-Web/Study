@@ -1,24 +1,26 @@
+import {logout} from '@react-native-seoul/kakao-login';
 import React from 'react';
-import {GestureResponderEvent, Pressable, StyleSheet, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 
-import {KakaoLogo} from '../assets/svgs';
 import Colors from '../constants/Color';
+import {signOut} from '../redux/authSlice';
+import {useAppDispatch} from '../redux/hooks';
 
-interface ICirecleButton {
-  logo: 'google' | 'naver' | 'kakao';
-  onPress?: (event: GestureResponderEvent) => void;
-}
+const LogoutButton = () => {
+  const dispatch = useAppDispatch();
 
-const CircleButton = ({logo, onPress}: ICirecleButton) => {
   return (
-    <View style={[styles.buttonContainer, styles[logo]]}>
+    <View style={styles.buttonContainer}>
       <Pressable
-        onPress={() => {}}
+        onPress={async () => {
+          await logout();
+          dispatch(signOut());
+        }}
         style={({pressed}) => [
           styles.innerContainer,
           pressed && styles.pressed,
         ]}>
-        <KakaoLogo />
+        <Text>로그아웃</Text>
       </Pressable>
     </View>
   );
@@ -26,6 +28,7 @@ const CircleButton = ({logo, onPress}: ICirecleButton) => {
 
 const styles = StyleSheet.create({
   buttonContainer: {
+    backgroundColor: Colors.GREY_SECONDARY,
     borderRadius: 37,
     height: 74,
     width: 74,
@@ -41,8 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  kakao: {backgroundColor: Colors.kakao},
-  naver: {backgroundColor: Colors.naver},
+
   pressed: {
     alignItems: 'center',
     flex: 1,
@@ -51,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CircleButton;
+export default LogoutButton;

@@ -1,13 +1,12 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import LoginButton from '../components/LoginButton';
-import Colors from '../constants/Color';
+import LogoutButton from '../components/LogoutButton';
 
-const LoginScreen = () => {
+const LogoutScreen = () => {
   return (
     <View style={styles.screen}>
-      <LoginButton />
+      <LogoutButton />
     </View>
   );
 };
@@ -21,4 +20,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default LogoutScreen;
