@@ -6,7 +6,6 @@ import LogContext from '../../contexts/LogContext';
 
 function FeedScreen(props) {
   const {logs} = useContext(LogContext);
-  //console.log(JSON.stringify(logs));
 
   return (
     <View style={styles.block}>
