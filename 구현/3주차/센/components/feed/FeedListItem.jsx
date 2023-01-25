@@ -4,15 +4,7 @@ import React from 'react';
 import {Pressable, Platform, Text, StyleSheet, View} from 'react-native';
 import UserAvatar from 'react-native-user-avatar';
 import {useNavigation} from '@react-navigation/native';
-
-// 정규식을 사용해 모든 줄 바꿈 문자 제거
-function truncate(text) {
-  const replaced = text.replace(/\n/g, '');
-  if (replaced.length <= 100) {
-    return replaced;
-  }
-  return replaced.slice(0, 100).concat('...');
-}
+import TextTruncate from './TextTruncate';
 
 function formatDate(date) {
   const d = new Date(date);
@@ -53,7 +45,7 @@ function FeedListItem({log}) {
           <Text style={styles.date}>{formatDate(date)}</Text>
         </View>
       </View>
-      <Text style={styles.body}>{truncate(body)}</Text>
+      <Text style={styles.body}>{TextTruncate(body)}</Text>
     </Pressable>
   );
 }
