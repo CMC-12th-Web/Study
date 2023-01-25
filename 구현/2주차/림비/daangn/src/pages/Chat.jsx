@@ -3,13 +3,21 @@ import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet, Image } from 'r
 import { chatData } from '../data/chat';
 
 function Chat({ navigation }) {
+  const chatRoomKey = Object.keys(chatData[0].messages);
+  const getUserImg = (roomId) => {
+    return Object.values(chatData[0].messages[roomId])[0].receivedUser.image;
+  }
+  const getUserName = (roomId) => {
+    return Object.values(chatData[0].messages[roomId])[0].receivedUser.name;
+  }
+  
   return (
     <SafeAreaView>
       {
-        Object.keys(chatData[0].messages).map((roomId, idx) => (
+        chatRoomKey.map((roomId, idx) => (
           <TouchableOpacity style={style.userInfo} key={idx} onPress={() => navigation.navigate('ChatDetail', { data: chatData[0].messages[roomId] })}>
-            <Image source={{ uri: Object.values(chatData[0].messages[roomId])[0].receivedUser.image }} style={style.userImg} />
-            <Text style={style.userName}>{Object.values(chatData[0].messages[roomId])[0].receivedUser.name}</Text>
+            <Image source={{ uri: getUserImg(roomId) }} style={style.userImg} />
+            <Text style={style.userName}>{getUserName(roomId)}</Text>
           </TouchableOpacity>
         ))
       }
@@ -38,4 +46,4 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000'
   }
-})
+});
