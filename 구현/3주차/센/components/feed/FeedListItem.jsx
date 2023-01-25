@@ -6,7 +6,7 @@ import textTruncate from './textTruncate';
 import formatDate from './formatDate';
 
 function FeedListItem({log}) {
-  const {name, title, body, date} = log; 
+  const {name, body, date} = log; 
 
   const navigation = useNavigation();
   const onPress = () => {
@@ -53,12 +53,6 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
     fontSize: 12,
     color: '#546e7a',
-    marginBottom: 8,
-  },
-  title: {
-    color: '#263238',
-    fontSize: 18,
-    fontWeight: 'bold',
     marginBottom: 8,
   },
   body: {

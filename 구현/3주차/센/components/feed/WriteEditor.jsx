@@ -4,8 +4,6 @@ import {StyleSheet, TextInput, View} from 'react-native';
 function WriteEditor({
   onChangeBody,
   body,
-  onChangeTitle,
-  title,
   onChangeName,
   name,
 }) {
@@ -15,21 +13,10 @@ function WriteEditor({
     <View style={styles.block}>
       <TextInput
         placeholder="이름을 입력하세요"
-        style={styles.titleInput}
+        style={styles.nameInput}
         returnKeyType="next"
         onChangeText={onChangeName}
         value={name}
-        onSubmitEditing={() => {
-          bodyRef.current.focus();
-        }}
-      />
-      <TextInput
-        placeholder="제목을 입력하세요"
-        style={styles.titleInput}
-        returnKeyType="next"
-        onChangeText={onChangeTitle}
-        value={title}
-        ref={bodyRef}
         onSubmitEditing={() => {
           bodyRef.current.focus();
         }}
@@ -48,8 +35,11 @@ function WriteEditor({
 }
 
 const styles = StyleSheet.create({
-  block: {flex: 1, padding: 16},
-  titleInput: {
+  block: {
+    flex: 1, 
+    padding: 16
+  },
+  nameInput: {
     paddingVertical: 0,
     fontSize: 18,
     marginBottom: 16,

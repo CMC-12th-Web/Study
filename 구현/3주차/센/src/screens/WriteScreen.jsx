@@ -17,11 +17,12 @@ import LogContext from '../../contexts/LogContext';
 function WriteScreen({route}) {
   const log = route.params?.log;
   const [name, setName] = useState(log ? log.name : '');
-  const [title, setTitle] = useState(log ? log.title : '');
-  const [body, setBody] = useState(log ? log.title : '');
+  const [body, setBody] = useState(log ? log.body : '');
+
   const navigation = useNavigation();
 
   const {onCreate, onModify, onRemove} = useContext(LogContext);
+
   const onAskRemove = () => {
     Alert.alert('삭제', '정말로 삭제하시겠어요?', [
       {text: '취소', style: 'cancel'},
@@ -45,13 +46,11 @@ function WriteScreen({route}) {
         id: log.id,
         date: log.date,
         name: log.name,
-        title,
         body,
       });
     } else {
       onCreate({
         name,
-        title,
         body,
         date: new Date().toISOString(),
       });
@@ -73,8 +72,6 @@ function WriteScreen({route}) {
         <WriteEditor
           name={name}
           onChangeName={setName}
-          title={title}
-          onChangeTitle={setTitle}
           body={body}
           onChangeBody={setBody}
         />

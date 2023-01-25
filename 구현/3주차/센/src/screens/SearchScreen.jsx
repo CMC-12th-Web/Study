@@ -13,7 +13,7 @@ function SearchScreen({navigation}) {
     keyword === ''
       ? []
       : logs.filter(log =>
-          [log.title, log.body].some(text => text.includes(keyword)),
+          [log.name, log.body].some(text => text.includes(keyword)),
         );
   if (keyword === '') {
     return <EmptySearchResult type="EMPTY_KEYWORD" />;

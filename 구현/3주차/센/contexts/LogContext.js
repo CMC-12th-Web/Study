@@ -7,11 +7,10 @@ const LogContext = createContext();
 export function LogContextProvider({children}) {
   const initialLogsRef = useRef(null);
   const [logs, setLogs] = useState([]);
-  const onCreate = ({name, title, body, date}) => {
+  const onCreate = ({name, body, date}) => {
     const log = {
       id: uuidv4(),
       name,
-      title,
       body,
       date,
     };
