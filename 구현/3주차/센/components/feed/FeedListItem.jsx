@@ -29,7 +29,7 @@ function formatDate(date) {
 }
 
 function FeedListItem({log}) {
-  const {name, title, body, date} = log; // 사용하기 편하게 객체 구조 분해 할당
+  const {name, title, body, date} = log; 
 
   const navigation = useNavigation();
   const onPress = () => {
@@ -53,8 +53,6 @@ function FeedListItem({log}) {
           <Text style={styles.date}>{formatDate(date)}</Text>
         </View>
       </View>
-
-      {/* <Text style={styles.title}>{title}</Text> */}
       <Text style={styles.body}>{truncate(body)}</Text>
     </Pressable>
   );

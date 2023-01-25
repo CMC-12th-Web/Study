@@ -34,12 +34,10 @@ const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 28,
-    // iOS 전용 그림자 설정
     shadowColor: '#4d4d4d',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
     shadowRadius: 4,
-    // 안드로이드
     elevation: 5,
     overflow: Platform.select({android: 'hidden'}),
   },
