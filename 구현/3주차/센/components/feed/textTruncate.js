@@ -1,4 +1,4 @@
-export default function TextTruncate(text) {
+export default function textTruncate(text) {
   const replaced = text.replace(/\n/g, '');
   if (replaced.length <= 100) {
     return replaced;
